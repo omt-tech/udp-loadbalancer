@@ -12,8 +12,23 @@ Run: `mvn install`
 
 Pick out `balancer.jar` from /target folder.
 
-Run with `java -jar balancer.jar <port> <server1> <server2>`
-For example for sip udp trace balancing:
+Run with -Dconfig= pointed at either full path of a .json extension file or a relative path to where you execute the jar.
 
-`java -jar balancer.jar 5060 tracelogger01.internal tracelogger02.internal`
+`java -Dconfig=config.json -jar balancer.jar 5060 tracelogger01.internal tracelogger02.internal`
+
+Sample config file:
+```
+[
+	{	
+		"label": "syslog",
+		"port": 5044,
+		"servers": ["backend-server01.internal", "backend-server01.internal","backend-server01.internal"]
+	},
+	{	
+		"label": "syslog2",
+		"port": 5045,
+		"servers": ["otherone01", "otherone02","otherone03"]
+	}
+]
+```
 
