@@ -13,16 +13,15 @@ public class UdpLoadBalancerHandler extends SimpleChannelInboundHandler<Datagram
 
     private static final Random random = new Random();
 
-    public UdpLoadBalancerHandler(String[] servers) {
-        this(servers, false);
-    }
-    public UdpLoadBalancerHandler(String[] servers, boolean debug) {
+    public UdpLoadBalancerHandler(UdpLoadBalancerConfig config, boolean debug) {
         this.debug = debug;
-        this.servers = servers;
+        this.servers = config.servers;
+        this.port = config.port;
     }
 
     private boolean debug;
     private String[] servers;
+    private int port;
 
 
     String getNextServer() {
@@ -35,7 +34,7 @@ public class UdpLoadBalancerHandler extends SimpleChannelInboundHandler<Datagram
     }
 
     InetSocketAddress getServer() {
-        return new InetSocketAddress(getNextServer(), 5060);
+        return new InetSocketAddress(getNextServer(), port);
     }
 
     @Override
