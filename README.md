@@ -6,9 +6,10 @@ Does stateless random robin balancing across all the provided servers.
 This server will also act as a (one way) relay if you supply only one server to balance across.
 
 How to build:
-
 Install maven
-Run: `mvn install`
+Clone repo
+`git clone git@github.com/mtdevelopment/udp-loadbalancer`
+`cd udp-loadbalancer && mvn install`
 
 Pick out `balancer.jar` from /target folder.
 
