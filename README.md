@@ -14,7 +14,7 @@ Pick out `balancer.jar` from /target folder.
 
 Run with -Dconfig= pointed at either full path of a .json extension file or a relative path to where you execute the jar.
 
-`java -Dconfig=config.json -jar balancer.jar 5060 tracelogger01.internal tracelogger02.internal`
+`java -Dconfig=config.json -jar balancer.jar`
 
 Sample config file:
 ```
